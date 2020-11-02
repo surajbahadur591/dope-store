@@ -2,8 +2,23 @@
   "workbench.colorCustomizations": {
     "titleBar.activeForeground": "#000",
     "titleBar.inactiveForeground": "#000000CC",
-    "titleBar.activeBackground": "#FFC600",
-    "titleBar.inactiveBackground": "#FFC600CC"
+    "titleBar.activeBackground": "#28587B",
+    "titleBar.inactiveBackground": "#28587B"
     "window.title": "",
-  }
+
+    // "editor.background" : "#282725"
+    "editor.foreground": "#B497D6",
+    "editorCursor.foreground": "#FF5543",
+    
+
+     
+}
+
+"editor.tokenColorCustomizations" : {
+  "[Cobalt2]": {
+    "comments" :"#ff5543",
+    
+  },
+
+}
 }
