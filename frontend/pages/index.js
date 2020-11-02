@@ -1,13 +1,12 @@
 import Link from 'next/link'
+import { render } from 'nprogress'
+import Items from '../components/Items'
 
 const Home = props => (
-    <> 
-        <p>Home Page</p>
+        <div>
+            <Items/>
+        </div>
 
-        
-        
-         
-    </>
-)
+);
 
 export default Home
