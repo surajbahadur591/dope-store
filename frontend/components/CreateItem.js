@@ -135,4 +135,3 @@ const CREATE_ITEM_MUTATION = gql`
 export default CreateItem;
 export {CREATE_ITEM_MUTATION }; 
 
-// apple
