@@ -31,11 +31,11 @@ const CREATE_ITEM_MUTATION = gql`
 
  class CreateItem extends Component {
      state = {
-         title : 'White T-shirt',
-         description : 'Have a versatile look anytime',
+         title : 'Enter Name of Your product',
+         description : 'What is your Product',
          image : '',
          largeImage : '',
-         price : 299,
+         price : 0,
      };
      handleChange = (e) => {
         const { name, type, value } = e.target;
