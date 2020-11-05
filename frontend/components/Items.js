@@ -3,6 +3,11 @@ import {Query} from 'react-apollo';
 import gql from 'graphql-tag'
 import  styled from 'styled-components'
 import Item from './Item'
+
+import Pagination from './Pagination'
+
+
+
 const Center = styled.div`
 text-align: center;
 `;
@@ -23,7 +28,7 @@ const ALL_ITEMS_QUERY = gql`
 const ItemsList = styled.div`
 display:grid;
 grid-template-columns: 1fr 1fr;
-grid-gap : 60px;
+grid-gap : 50px;
 max-width : ${props => props.theme.maxWidth};
 margin: 0 auto;
 `;
@@ -32,7 +37,8 @@ class Items extends Component {
     render() {
         return (
             <Center>
-                  
+                <Pagination page={this.props.page}/>
+
                 <Query query={ALL_ITEMS_QUERY}>
                 { ({data, error, loading}) => {
                  
@@ -47,6 +53,8 @@ class Items extends Component {
                 }
 
                 </Query>
+                <Pagination  page={this.props.page}></Pagination> 
+                
             </Center>
         )
     }
