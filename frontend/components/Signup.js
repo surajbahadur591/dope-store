@@ -3,6 +3,7 @@ import {Mutation} from 'react-apollo'
 import gql from 'graphql-tag'
 import Form from './styles/Form'
 import Error from './ErrorMessage'
+import {CURRENT_USER_QUERY} from './User'
 
 const SIGNUP_MUTATION = gql`
     mutation SIGNUP_MUTATION(
@@ -29,7 +30,7 @@ class Signup extends Component {
     render() {
         return (
 
-            <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
+            <Mutation mutation={SIGNUP_MUTATION} variables={this.state} refetchQueries={ [ {query: CURRENT_USER_QUERY}]}>
 
                 {(signUp, {error, loading}) => {
 
@@ -43,7 +44,7 @@ class Signup extends Component {
                 <fieldset disabled={loading} aria-busy ={loading}>
                     <h2> Sign up for an Account</h2>
                     <Error error={error}></Error>
-                    <label htmlFor="email">Email
+                    <label htmlFor="email">EMAIL
                     <input type="email" name="email" placeholder="email" value={this.state.email}  onChange={this.saveToState}/>
                     </label>
                     <label htmlFor="name"> Name
