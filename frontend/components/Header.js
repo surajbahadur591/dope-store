@@ -1,6 +1,23 @@
 import Nav from './Nav'
 import Link from 'next/link'
 import styled from 'styled-components'
+import Router from 'next/router'
+import Nprogress from 'nprogress'
+
+
+Router.onRouteChangeStart = () => {
+    Nprogress.start();
+    console.log("onRouteChangeStart")
+}
+Router.onRouteChangeComplete = () => {
+    Nprogress.done();
+    console.log("onRouteChangeComplete")
+}
+Router.onRouteChangeError = () => {
+    Nprogress.done();
+    console.log("onRouteChangeError")
+}
+
 const theme = {
     red : '#FF0000',
     black : '#393939',

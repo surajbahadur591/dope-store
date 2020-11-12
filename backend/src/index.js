@@ -27,6 +27,23 @@ server.express.use((req,  res, next ) => {
 
 });
 
+ server.express.use( async (req, res, next ) => {
+
+    if(!req.userId) return next();
+
+    try {
+        const user = await db.query.user( { where: { id: req.userId}}, 
+            '{id, permissions, email, name}');
+    
+            req.user = user;
+            next();
+
+    } catch (error){
+        console.log(error)
+    }
+    
+})
+
 
 server.start({
     cors: {

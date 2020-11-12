@@ -30264,7 +30264,7 @@ var _jsxFileName = "C:\\Users\\Smartboy\\Desktop\\dope-store\\frontend\\pages\\i
 
 
 
- // comment
+ // commentg
 
 var Home = function Home(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
