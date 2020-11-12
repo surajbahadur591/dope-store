@@ -21,7 +21,7 @@ const Query = {
             throw new Error("You must be logged in")
         }
 
-        hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE', 'USER']);
+        hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE']);
 
         return ctx.db.query.users({}, info);
     },

@@ -112,7 +112,9 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: function onClick() {
             if (confirm('are you sure?')) {
-              deleteItem();
+              deleteItem().catch(function (err) {
+                alert(err.message);
+              });
             }
           },
           __source: {
@@ -30264,7 +30266,7 @@ var _jsxFileName = "C:\\Users\\Smartboy\\Desktop\\dope-store\\frontend\\pages\\i
 
 
 
- // commentg
+ // comment
 
 var Home = function Home(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -30340,7 +30342,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/items.js ***!
   \******************************/
@@ -30365,5 +30367,5 @@ module.exports = dll_18682c416555df0bf0b9;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]));;
+},[[5,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=items.js.map
