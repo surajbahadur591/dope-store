@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {CURRENT_USER_QUERY } from './User'
 import gql from 'graphql-tag'
+import CartItem from './CartItem'
 
 const REMOVE_FROM_CART_MUTATION = gql`
     mutation removeFromCart($id: ID!){
@@ -28,10 +29,41 @@ class RemoveFromCart extends React.Component{
         id: PropTypes.string.isRequired,
     };
 
+    update=(cache, payload) => {
+        console.log("remove")
+        const data = cache.readQuery({
+            query: CURRENT_USER_QUERY
+        });
+
+        console.log(data);
+        const cartItemId = payload.data.removeFromCart.id;
+        data.me.cart = data.me.cart.filter( CartItem => 
+            CartItem.id !== cartItemId)
+        
+            cache.writeQuery({
+                query : CURRENT_USER_QUERY, data
+            })
+
+    }
+
     render(){
-        return ( <Mutation mutation={REMOVE_FROM_CART_MUTATION}>
+        return ( <Mutation mutation={REMOVE_FROM_CART_MUTATION}
+        variables={{
+            id: this.props.id
+        }}
+        update={this.update}
+        optimisticResponse={{
+            __typename : 'Mutation',
+            removeFromCart:{
+                __typename:'Cartitem',
+                id: this.props.id,
+            },
+        }}
+        refetchQueries={[{query: CURRENT_USER_QUERY}]}>
             {(removeFromCart, {loading, error})=>(
-            <BigButton title="Detele Item"> &times;</BigButton>
+            <BigButton disabled={loading} onClick={ () => {
+                removeFromCart().catch( err => alert(err.message));
+            }} title="Detele Item"> &times;</BigButton>
             )}
             </Mutation>
         )
