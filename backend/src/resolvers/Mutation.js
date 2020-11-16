@@ -5,7 +5,7 @@ const {promisify} = require('util')
 const jwt = require("jsonwebtoken")
 const {transport, makeANiceEmail} = require('../mail');
 const { hasPermission } = require("../utils");
-
+const stripe = require('../stripe')
 
 
 
@@ -269,6 +269,40 @@ const Mutations = {
                 id: args.id,
             }
         }, info)
+    },
+
+    async createOrder(parent, args, ctx, info) {
+        const {userId} = ctx.request;
+        if(!userId) throw new Error ("please Log in")
+        const user = await ctx.db.query.user({where: {id: userId}}, `{
+            id
+            name
+            email
+            cart {
+                id
+                quantity
+                item {
+                    title 
+                    price
+                    id
+                    description
+                    image
+                }
+            }
+        }` 
+            )
+
+        const amount = user.cart.reduce((tally, cartItem) => tally+ cartItem.item.price * cartItem.quantity,0);
+        // amount= amount*100;
+        console.log(`goint to take moneyyyy ${amount}`)
+
+        const charge = await stripe.charges.create({
+            amount: amount*100,
+            currency: 'INR',
+            source: args.token,
+        })
+
+
     }
 
 
