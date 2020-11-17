@@ -56,10 +56,10 @@ return (
 
         <footer>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-
-            <TakeMyMoney>
+            {me.cart.length && (<TakeMyMoney>
             <SickButton> CheckOut</SickButton>
-            </TakeMyMoney>
+            </TakeMyMoney>)}
+            
             
         </footer>
     </CartStyles>
