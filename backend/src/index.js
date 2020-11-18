@@ -7,7 +7,7 @@ const db= require('./db');
 
 const server = createServer();
 
-//handle cookie JWT
+//handle cookie JWT sds
 // populate current user
 
 server.express.use(cookieParser());

@@ -1,6 +1,8 @@
-endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: https://dope-store-prod-ebf5660ed2.herokuapp.com/dope store prod/prod
+endpoint: https://dope-store-prod-ebf5660ed2.herokuapp.com/dope-store-prod/prod
 datamodel: datamodel.graphql
-# secret : ${PRISMA_SECRET}
+secret: ${PRISMA_SECRET}
 
 hooks:
   post-deploy:

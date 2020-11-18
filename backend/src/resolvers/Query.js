@@ -47,22 +47,22 @@ const Query = {
         return order;
     },
 
-    async orders(parent, args, ctx, info){
-        const {userId} = ctx.request;
+    // async orders(parent, args, ctx, info){
+    //     const {userId} = ctx.request;
 
-        if(!userId){
-            throw new Error("You must be logged in")
-        }
+    //     if(!userId){
+    //         throw new Error("You must be logged in")
+    //     }
 
-        return ctx.db.query.orders({
-            where:{
-                users: { id: userId}
-            }
-        }, info)
+    //     return ctx.db.query.orders({
+    //         where:{
+    //             users: { id: userId}
+    //         }
+    //     }, info)
 
 
 
-    }
+    // }
 
 
 };
